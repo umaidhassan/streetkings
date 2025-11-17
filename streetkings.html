@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Kings</title>
+    <style>
+        /* Reset & basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #111;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            background-color: #000;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        nav a {
+            margin-left: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+            background: url('https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8c3RyZWV0d2VhcnxlbnwwfHx8fDE2NzI3NjY5NjM&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            background-color: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .section {
+            padding: 60px 20px;
+        }
+
+        .section h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product h4 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .product p {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .product button {
+            background-color: #f39c12;
+            border: none;
+            padding: 10px 20px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .product button:hover {
+            background-color: #e67e22;
+        }
+
+        #cart {
+            position: fixed;
+            right: 20px;
+            top: 80px;
+            background-color: #222;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            max-height: 70vh;
+            overflow-y: auto;
+            z-index: 200;
+        }
+
+        #cart h4 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        #cart ul {
+            list-style: none;
+        }
+
+        #cart li {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer {
+            background-color: #000;
+            text-align: center;
+            padding: 20px;
+            border-top: 2px solid #fff;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            header {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 10px;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+                padding: 15px;
+            }
+
+            #cart {
+                width: 90%;
+                left: 5%;
+                right: 5%;
+                top: auto;
+                bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Street Kings</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h2>Rule the Streets with Style</h2>
+    </section>
+
+    <section class="section" id="products">
+        <h3>Our Collection</h3>
+        <div class="products">
+            <div class="product">
+                <img src="https://via.placeholder.com/300x300.png?text=Hoodie" alt="Street Kings Hoodie">
+                <h4>Urban Hoodie</h4>
+                <p>$50</p>
+                <button onclick="addToCart('Urban Hoodie', 50)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/300x300.png?text=T-Shirt" alt="Street Kings T-Shirt">
+                <h4>King Tee</h4>
+                <p>$30</p>
+                <button onclick="addToCart('King Tee', 30)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/300x300.png?text=Cap" alt="Street Kings Cap">
+                <h4>Snapback Cap</h4>
+                <p>$25</p>
+                <button onclick="addToCart('Snapback Cap', 25)">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="cart">
+        <h4>Shopping Cart</h4>
+        <ul id="cart-items">
+            <li>No items yet</li>
+        </ul>
+        <p id="cart-total"></p>
+    </div>
+
+    <section class="section" id="about">
+        <h3>About Street Kings</h3>
+        <p style="max-width: 800px; margin: 0 auto; text-align: center;">
+            Street Kings is a bold streetwear brand inspired by urban culture, music, and self-expression. Our mission is to give everyone the confidence to rule the streets with style.
+        </p>
+    </section>
+
+    <section class="section" id="contact">
+        <h3>Contact Us</h3>
+        <p style="text-align: center;">Email us at <a href="mailto:info@streetkings.com">info@streetkings.com</a></p>
+    </section>
+
+    <footer>
+        &copy; 2025 Street Kings. All Rights Reserved.
+    </footer>
+
+    <script>
+        let cart = [];
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            cartItems.innerHTML = '';
+            if(cart.length === 0) {
+                cartItems.innerHTML = '<li>No items yet</li>';
+                cartTotal.innerHTML = '';
+                return;
+            }
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - $${item.price}`;
+                cartItems.appendChild(li);
+            });
+            cartTotal.innerHTML = `Total: $${total}`;
+        }
+    </script>
+</body>
+</html>
